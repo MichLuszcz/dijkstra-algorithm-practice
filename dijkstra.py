@@ -1,7 +1,7 @@
 from CellClass import Cell
 
 
-def get_closest_cell(cell_list: list(Cell)):
+def get_closest_cell(cell_list: list):
     if not cell_list:
         return
     current = cell_list[0]
@@ -12,13 +12,13 @@ def get_closest_cell(cell_list: list(Cell)):
     return closest
 
 
-Coordinates = tuple(int, int)
+Coordinates = list
 Grid = [[Cell]]
 
 
 def find_path_dijkstra(start: Coordinates,
                        goal: Coordinates,
-                       grid: Grid,) -> list(Cell):
+                       grid: Grid,) -> list:
     path = []  # Cells
     grid_height = len(grid)
     grid_width = len(grid[0])
@@ -58,14 +58,14 @@ def find_path_dijkstra(start: Coordinates,
     current_cell = goal_cell
     while (current_cell != start_cell):
         #   making the array of all parents of the final cell
-        path.push(current_cell)
+        path.append(current_cell)
         next_coordinates = current_cell.parent_coordinates
         if (next_coordinates is None):
             return []
 
         current_cell = grid[next_coordinates[1]][next_coordinates[0]]
 
-    path.push(current_cell)  # adding the starting cell to the end
+    path.append(current_cell)  # adding the starting cell to the end
     path.reverse()      # changing the path from finish-start to start-finish
     return path
 
@@ -73,5 +73,5 @@ def find_path_dijkstra(start: Coordinates,
 def all_values(array_2d):
     values = []
     for row in array_2d:
-        values = values.concat(row)
+        values += str(row)
     return values

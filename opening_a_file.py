@@ -49,12 +49,12 @@ def number_to_object_grid(number_grid: list) -> list:
     return object_grid
 
 
-def test():
-    board = read_board()
-    for row in board:
-        print(row)
-    obj_board = number_to_object_grid(board)
-    for row in obj_board:
-        print(row)
+# def test():
+#     board = read_board()
+#     for row in board:
+#         print(row)
+#     obj_board = number_to_object_grid(board)
+#     for row in obj_board:
+#         print(row)
 
-test()
+# test()
