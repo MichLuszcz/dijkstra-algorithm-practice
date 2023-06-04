@@ -7,4 +7,4 @@ class Cell:
         self.weight = weight
 
     def __repr__(self) -> str:
-        return "Cell coords(x:" + str(self.coordinates[0]) + " y:" + str(self.coordinates[1]) + ")"
+        return str(self.is_walkable) + " Cell coords(x:" + str(self.coordinates[0]) + " y:" + str(self.coordinates[1]) + ")"
