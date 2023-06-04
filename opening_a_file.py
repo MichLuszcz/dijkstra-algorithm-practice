@@ -4,8 +4,10 @@ from CellClass import Cell
 
 def prep_parser() -> str:
     parser = ArgumentParser()
-    args = parser.parse_args()
+
     parser.add_argument("filename", help="Name of a file to read")
+
+    args = parser.parse_args()
 
     return args.filename
 
