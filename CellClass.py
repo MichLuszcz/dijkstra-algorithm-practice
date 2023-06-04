@@ -3,6 +3,7 @@ class Cell:
         self.distance = distance
         self.is_walkable = is_walkable
         self.coordinates = coordinates
+        self.parent_coordinates = None
         self.weight = weight
 
     def __repr__(self) -> str:
