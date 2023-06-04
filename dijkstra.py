@@ -40,23 +40,23 @@ def find_path_dijkstra(start: Coordinates,
             neighbours.append(grid[y-1][x])
         if (x != 0):
             neighbours.append(grid[y][x-1])
-        if (y != grid_height):
+        if (y + 1 != grid_height):
             neighbours.append(grid[y+1][x])
-        if (x != grid_width):
+        if (x + 1 != grid_width):
             neighbours.append(grid[y][x+1])
         for neighbour in neighbours:
             # iterating over every neighbour
             # and updating their distances if needed
             if (neighbour.is_walkable or neighbour == goal_cell):
                 # sprawdza czy da się przejść lub czy jest u celu
-                if (neighbour.distance > closest.distance + neighbour.weight):
-                    neighbour.distance = closest.distance + neighbour.weight
+                if (neighbour.distance > closest.distance + float(neighbour.weight)):
+                    neighbour.distance = closest.distance + float(neighbour.weight)
                     # and setting the current cell as their parent
                     neighbour.parent_coordinates = closest.coordinates
         unexplored_cells.remove(closest)  # mark the cell as explored
 
     current_cell = goal_cell
-    while (current_cell != start_cell):
+    while (current_cell.coordinates != start_cell.coordinates):
         #   making the array of all parents of the final cell
         path.append(current_cell)
         next_coordinates = current_cell.parent_coordinates
@@ -73,5 +73,6 @@ def find_path_dijkstra(start: Coordinates,
 def all_values(array_2d):
     values = []
     for row in array_2d:
-        values += str(row)
+        for cell in row:
+            values.append(cell)
     return values
