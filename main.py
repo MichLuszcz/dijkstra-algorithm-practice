@@ -30,12 +30,22 @@ def show_result(obj_board: list, path: list):
     print(result)
 
 
+def find_start_and_finish(grid: list(list())):
+    findings = []
+    for row in grid:
+        for cell in row:
+            if cell.weight == -1:
+                findings.append(cell.coordinates)
+    return findings
+
+
 def main():
     board = read_board()
     obj_board = number_to_object_grid(board)
     start_and_end_coords = find_x(obj_board)
     path = find_path_dijkstra(start_and_end_coords[0], start_and_end_coords[1], obj_board)
     show_result(obj_board, path)
+    print(board)
 
 
 if __name__ == "__main__":

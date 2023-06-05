@@ -15,16 +15,17 @@ def prep_parser() -> str:
 def read_board() -> list:
     filename = prep_parser()
     board = []
-    len_of_row = 0
-    diff = 0
+    max_len_of_row = 0
     with open(filename, 'r') as file_handle:
         for index, line in enumerate(file_handle):
             board.append(list(line.rstrip('\n')))
-            if len(line.rstrip('\n')) < len_of_row:
-                diff = len_of_row - len(line.rstrip('\n'))
-                for _ in range(diff):
-                    board[index].append(' ')
-            len_of_row = len(board[index])
+    for row in board:
+        if len(row) > max_len_of_row:
+            max_len_of_row = len(row)
+
+    for row in board:
+        while len(row) < max_len_of_row:
+            row.append(" ")
 
     return board
 
@@ -37,12 +38,15 @@ def number_to_object_grid(number_grid: list) -> list:
         column_index = 0
         for element in row:
             if element.isnumeric():
-                object_row.append(Cell(float('inf'), True, [column_index, row_index], element))
+                object_row.append(
+                    Cell(float('inf'), True, [column_index, row_index], element))
             elif element == 'X' or element == 'x':
-                object_row.append(Cell(float('inf'), True, [column_index, row_index], -1))
+                object_row.append(
+                    Cell(float('inf'), True, [column_index, row_index], -1))
             else:
                 # spacja
-                object_row.append(Cell(float('inf'), False, [column_index, row_index], 0))
+                object_row.append(
+                    Cell(float('inf'), False, [column_index, row_index], 0))
             column_index += 1
         object_grid.append(object_row)
         row_index += 1
