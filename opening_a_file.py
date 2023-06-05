@@ -39,7 +39,7 @@ def number_to_object_grid(number_grid: list) -> list:
             if element.isnumeric():
                 object_row.append(Cell(float('inf'), True, [column_index, row_index], element))
             elif element == 'X' or element == 'x':
-                object_row.append(Cell(float('inf'), True, [column_index, row_index], 0))
+                object_row.append(Cell(float('inf'), True, [column_index, row_index], -1))
             else:
                 # spacja
                 object_row.append(Cell(float('inf'), False, [column_index, row_index], 0))
