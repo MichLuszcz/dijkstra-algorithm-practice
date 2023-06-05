@@ -4,11 +4,10 @@ from CellClass import Cell
 def get_closest_cell(cell_list: list):
     if not cell_list:
         return
-    current = cell_list[0]
     closest = cell_list[0]
     for cell in cell_list:
-        if (current.distance < closest.distance):
-            closest = current
+        if (cell.distance < closest.distance):
+            closest = cell
     return closest
 
 
@@ -50,7 +49,8 @@ def find_path_dijkstra(start: Coordinates,
             if (neighbour.is_walkable or neighbour == goal_cell):
                 # sprawdza czy da się przejść lub czy jest u celu
                 if (neighbour.distance > closest.distance + float(neighbour.weight)):
-                    neighbour.distance = closest.distance + float(neighbour.weight)
+                    neighbour.distance = closest.distance + \
+                        float(neighbour.weight)
                     # and setting the current cell as their parent
                     neighbour.parent_coordinates = closest.coordinates
         unexplored_cells.remove(closest)  # mark the cell as explored
