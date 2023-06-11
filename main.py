@@ -43,9 +43,9 @@ def main():
     board = read_board()
     obj_board = number_to_object_grid(board)
     start_and_end_coords = find_x(obj_board)
-    path = find_path_dijkstra(start_and_end_coords[0], start_and_end_coords[1], obj_board)
+    path = find_path_dijkstra(
+        start_and_end_coords[0], start_and_end_coords[1], obj_board)
     show_result(obj_board, path)
-    print(board)
 
 
 if __name__ == "__main__":
